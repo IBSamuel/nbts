@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.NbtsLogo{
+    height: 100px;
+}
+.body{
+    background-image: url("img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smallerDiv{
+    background-color: transparent;
+    height: 520px;
+    width: 600px;
+    margin: 20px;
+    border-radius  : 20px;
+    backdrop-filter: blur(5px);
+}
+.heading{
+    font-weight:600;
+    font-size: 60px;
+}
+@media screen and (max-width:688px) {
+    .body{
+        background-image: url("img/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 120vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .smallerDiv{
+        background-color: transparent;
+        height: 550px;
+        width: 500px;
+        margin: 20px;
+        border-radius  : 20px;
+        backdrop-filter: blur(5px);
+    }
+}

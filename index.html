@@ -1,0 +1,160 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<title>internet hotspot > login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+	<link rel="stylesheet" href="Index.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+	<style type="text/css">
+		/* body {
+			color: #737373;
+			font-size: 10px;	
+			font-family: verdana;
+		} */
+
+
+
+		a,
+		a:link,
+		a:visited,
+		a:active {
+			color: #AAAAAA;
+			text-decoration: none;
+			font-size: 10px;
+		}
+
+		a:hover {
+			border-bottom: 1px dotted #c1c1c1;
+			color: #AAAAAA;
+		}
+
+		img {
+			border: none;
+		}
+
+		td {
+			font-size: 14px;
+			color: #7A7A7A;
+		}
+
+		.style1 {
+			color: #CC0000
+		}
+	</style>
+
+</head>
+
+<body>
+	$(if chap-id)
+	<marquee behavior="alternate" class="fixed-top p-5" direction="right"><span id="greetings"></span>, You are welcome
+		to NBTS NET, Enjoy the
+		internet facility</marquee>
+	<div class="body">
+		<form name="sendin" action="$(link-login-only)" method="post">
+			<input type="hidden" name="username" class="form-control" />
+			<input type="hidden" name="password" class="form-control" />
+			<input type="hidden" name="dst" class="form-control" value="$(link-orig)" />
+			<input type="hidden" class="form-control" name="popup" value="true" />
+		</form>
+
+		<script type="text/javascript" src="/md5.js"></script>
+		<script type="text/javascript">
+			<!-
+				function doLogin() {
+				document.sendin.username.value = document.login.username.value;
+				document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+				document.sendin.submit();
+				return false;
+				}
+			//-->
+		</script>
+		<!-- $(endif) -->
+
+		<div align="center">
+			<a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)"></a>
+		</div>
+
+
+		<div class="smallerDiv text-center p-4 row shadow">
+			<div class="mainInfor col-lg-8">
+				<br />$(if trial == 'yes')Free trial available,<a style="color: #FF8080"
+					href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>(endif)
+				<form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()"
+					$(endif)>
+
+					<input type="hidden" name="dst" class="form-control" value="$(link-orig)" />
+					<a href="https://nbts.edu.ng/" target="_blank" style="border: none;"><img src="img/schoolLogo.png"
+							class="w-25" alt="NBTS" /></a>
+					<p class="heading">Welcome</p>
+					<span>Kindly log on to use NBTS internet facility</span>
+					<input type="hidden" name="popup" value="true" />
+
+					<div class="input-group mb-3 w-75 mx-auto m-3">
+						<span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
+						<input name="username" type="text" class="form-control" placeholder="Username"
+							value="$(username)">
+					</div>
+					<div class="input-group mb-3 w-75 mx-auto m-3">
+						<span class="input-group-text" id="basic-addon1"><i class="bi bi-key-fill"></i></span>
+						<input name="password" type="password" class="form-control" placeholder="password">
+					</div>
+					<input class="btn btn-primary" type="submit" value="Submit" />
+					<br />
+					<div style="color: #c1c1c1; font-size: 9px" class="m-2">Powered by NBTS ICT</div>
+					$(if error)<br />
+					<div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)
+			</div>
+			<div class="time text-start pt-5 col-lg-4">
+				<div class="shadow p-3 rounded">
+					<small>Date:</small>
+					<p class="h6" id="newDay">Wed Jun 14 2023</p>
+					<small>Time:</small>
+					<p class="h6" id="newTime">3:36:49 PM</p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<script>
+		const set = () => {
+			let day = new Date().toDateString()
+			let time = new Date().toLocaleTimeString()
+			newDay.innerText = day
+			newTime.innerText = time
+			console.log(day, time)
+			if (time > "06:00:00 AM") {
+				greetings.innerText = "Good Morning"
+			}
+			if (time >= "12:00:00 PM" && time <= "5:00:00 PM") {
+				greetings.innerText = "Good Afternoon"
+			}
+			if (time >= "05:00:00 PM" && time <= "07:00:00 PM") {
+				greetings.innerText = "Good Evening"
+			}
+		}
+		setInterval(() => {
+			set()
+		}, 3);
+	</script>
+
+	<script type="text/javascript">
+		<!--
+		  document.login.username.focus();
+		//-->
+	</script>
+</body>
+
+</html>
